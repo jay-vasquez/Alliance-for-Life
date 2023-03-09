@@ -45,7 +45,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Year, "Year", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("Year", null, htmlAttributes: new { @class = "form-control" })
+                @Html.TextBox("Year", null, htmlAttributes: new { placeholder = "Select Year", @class = "form-control", required = "required", name = "Year" })
+                @*@Html.DropDownList("Year", null, htmlAttributes: new { @class = "form-control" })*@
                 @Html.ValidationMessageFor(model => model.Year, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -200,8 +201,20 @@
 <br />
 <br />
 
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/css/datepicker.min.css" rel="stylesheet">
+
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
     <script src="~/Scripts/MyScripts.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/js/bootstrap-datepicker.min.js"></script>
+    <script>
+        var dp = $("#Year").datepicker({
+            format: "yyyy",
+            startView: "years",
+            minViewMode: "years"
+        });
+    </script>
 }
 

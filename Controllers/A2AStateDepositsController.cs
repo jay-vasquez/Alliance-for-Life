@@ -15,7 +15,7 @@ namespace Alliance_for_Life.Controllers
         public ActionResult Index(int? Year, string Month)
         {
             var datelist = Enumerable.Range(System.DateTime.Now.Year-1, 5).ToList();
-            ViewBag.Year = new SelectList(datelist);
+            ViewBag.Year = Year;// new SelectList(datelist);
             ViewBag.Month = new SelectList(Enum.GetValues(typeof(Months)).Cast<Months>());
 
 
@@ -69,7 +69,7 @@ namespace Alliance_for_Life.Controllers
         public ActionResult Create()
         {
             var datelist = Enumerable.Range(System.DateTime.Now.Year-1, 5).ToList();
-            ViewBag.Year = new SelectList(datelist);
+            //ewBag.Year = new SelectList(datelist);
             return View();
         }
 
@@ -106,7 +106,7 @@ namespace Alliance_for_Life.Controllers
             }
 
             var datelist = Enumerable.Range(System.DateTime.Now.Year-1, 5).ToList();
-            ViewBag.Year = new SelectList(datelist);
+            //ViewBag.Year = new SelectList(datelist);
             return View(a2AStateDeposits);
         }
 

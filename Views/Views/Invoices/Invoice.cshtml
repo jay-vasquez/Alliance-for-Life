@@ -1,0 +1,197 @@
+﻿@model  Alliance_for_Life.Models.Invoices
+
+@{
+    Layout = "~/Views/Shared/_InvoiceLayout.cshtml";
+}
+
+<meta charset="UTF-8">
+<link href="~/Scripts/Invoice/style.css" rel="stylesheet" />
+<div class="toolbar hidden-print container invoice">
+    <div class="text-right">
+        <button id="backInvoice" class="btn btn-danger" onclick="location.href='@Url.Action("Index","Invoices")'"><i class="fa fa-arrow-circle-left"></i> Back</button>
+
+        <button id="printInvoice" class="btn btn-success" onclick="window.print();"><i class="fa fa-print"></i> Print</button>
+
+        @*<button id="downloadpdfe" class="btn btn-primary" onclick="window.print();"> <i class="fa fa-arrow-down"></i>Download PDF</button>*@
+    </div>
+</div>
+<div class="container invoice" style="padding-top:-10px;" id="invoice">
+    <div class="invoice-header">
+        <div class="row">
+            <div class="col-xs-8">
+            </div>
+            <div class="col-xs-4">
+
+            </div>
+        </div>
+    </div>
+    <div class="invoice-body">
+        <div class="row" style=" font-family:'Times New Roman'">
+            <div class="col-xs-6">
+
+                <div class="col-xs-10" style="font-size:medium;">
+                    <div class="media">
+                        <div class="media-left">
+                            <img src="~/Content/DataTables/images/AFL-2015LOGO-CMYK[1].jpg" class="media-object logo" style=" float: left; padding-right: 1em; padding-top: .5em;" />
+                        </div>
+                        <ul class="media-body list-unstyled">
+                            <li><strong>Alliance For Life</strong></li>
+                            <li> 487 SW Ward Rd</li>
+                            <li> Lee’s Summit, MO 64081 </li>
+                            <li><i class="fa fa-phone"> 816-806-4168</i></li>
+                        </ul>
+                    </div>
+                </div>
+                <br />
+                <div>
+                    <h2> <strong>Monthly Invoice </strong></h2>
+                    <h3 style="text-align:left;">@Model.Month,&nbsp; @Model.Year</h3>
+
+                </div>
+
+            </div>
+            <div class="col-xs-6" style="font-size:medium;">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title" style="text-align:center;">SubContractor</h3>
+                    </div>
+                    <div class="panel-body">
+                        <dl >
+                            <dt style="text-align:left;">Name</dt>
+                            <dd style="text-align:left;">@Model.Subcontractor.OrgName</dd>
+                            <dt style="text-align:left;">Address</dt>
+                            <dd style="text-align:left;">@Model.Subcontractor.Address1 </dd>
+                            <dd style="text-align:left;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Model.Subcontractor.City,&nbsp;@Model.Subcontractor.State&nbsp; @Model.Subcontractor.ZipCode</dd>
+                            <dt style="text-align:left;"> Key Contact</dt>
+                            <dd style="text-align:left;">@Model.Subcontractor.Director</dd>
+                            <dt style="text-align:left;">Invoice Date</dt>
+                            <dd class="text-muted"> Date: @System.DateTime.Now.ToString("MMMM dd, yyyy")</dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title text-center">Alternatives to Abortion Program</h3>
+            </div>
+            <table class="table table-bordered table-condensed">
+                <thead>
+                    <tr>
+                        <th class="text-center colfix"> Details</th>
+                        <th class="text-center colfix"> Cost</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            Administrative Cost
+                        </td>
+                        <td class="text-right">
+                            <span class="mono">@Model.DirectAdminCost.ToString("C")</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Participant Cost
+                        </td>
+                        <td class="text-right">
+                            <span class="mono">@Model.ParticipantServices.ToString("C")</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Grand Total
+                        </th>
+                        <td class="text-right">
+                            <span class="mono">@Model.GrandTotal.ToString("C")</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Less Management Fee
+                        </td>
+                        <td class="text-right">
+                            <span class="mono">@Model.LessManagementFee.ToString("C")</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Deposit Amount
+                        </td>
+                        <td class="text-right">
+                            <span class="mono">@Model.DepositAmount.ToString("C")</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="panel panel-default">
+            <table class="table table-bordered table-condensed">
+                <tr>
+                    <td class="text-left ">Beginning Allocation</td>
+                    <td class="text-right ">@ViewBag.AllocatedOldBudget.ToString("C")</td>
+                </tr>
+                <tr>
+                    <td class="text-left ">Adjusted Allocation</td>
+                    <td class="text-right ">@ViewBag.AllocatedAdjustments.ToString("C")</td>
+
+                </tr>
+                <tr>
+                    <td class="text-left ">Remaining Balance</td>
+                    @if (Model.BalanceRemaining < 0)
+                    {
+                    <td class="text-right" style="color: red">
+                        @Math.Round((Model.BalanceRemaining), 3).ToString("C")
+                    </td>
+                    }
+                    else
+                    {
+                        <td class="text-right">
+                            @Math.Round((Model.BalanceRemaining), 3).ToString("C")
+                        </td>
+                    }
+                </tr>
+            </table>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-xs-5">
+
+            </div>
+            <div class="col-xs-7">
+                <div class="panel panel-default" style="border:none;">
+                    <div class="panel-body">
+                        <strong>Signature:</strong> ____________________________________________________
+                        <ul class="list-unstyled">
+                            <li style="font-size:12px; text-align:center;">
+                                *Signing of invoice indicates that all charges have been verified and
+                                are true and accurate to the best of sub-contractor’s knowledge.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $.ajax({
+    url: "/User/DownloadViewAsPDF",
+    data: {
+        encryptId :"downloadpdf",
+    },
+    type: "GET",
+    contentType: "application/json;charset=utf-8",
+    dataType: "json",
+    success: function(result) {
+        alert("Report Downloaded as PDF!!");
+    },
+    error: function(errormessage) {
+        alert(errormessage.responseText);
+    }
+});
+</script>
+

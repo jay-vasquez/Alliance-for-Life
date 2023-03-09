@@ -14,15 +14,21 @@ namespace Alliance_for_Life.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         [Authorize]
-        public ActionResult Index(string sortOrder, int? Year, string Month, Guid? searchString, string currentFilter, int? page, int? pgSize)
+        public ActionResult Index(string sortOrder, int? Year, string yearPickerMain, string Month, Guid? searchString, string currentFilter, int? page, int? pgSize)
         {
+            int? yearParameter = null;
+            yearParameter = Year;
+            if(yearPickerMain != "")
+            {
+                yearParameter = Convert.ToInt32(yearPickerMain);
+            }
 
             ViewBag.Sub = searchString;
-            ViewBag.Yr = Year;
+            ViewBag.Yr = yearParameter;
             ViewBag.Mnth = Month;
 
             var datelist = Enumerable.Range(System.DateTime.Now.Year-1, 5).ToList();
-            ViewBag.Year = new SelectList(datelist);
+            ViewBag.Year = yearParameter;// new SelectList(datelist);
             ViewBag.Month = new SelectList(Enum.GetValues(typeof(Months)).Cast<Months>());
             ViewBag.CurrentSort = sortOrder;
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
@@ -41,20 +47,20 @@ namespace Alliance_for_Life.Controllers
             ViewBag.CurrentFilter = searchString;
 
             //assign default values if Year is empty
-            if (String.IsNullOrEmpty(Year.ToString()))
+            if (String.IsNullOrEmpty(yearParameter.ToString()))
             {
-                Year = DateTime.Now.Year;
+                yearParameter = DateTime.Now.Year;
             }
 
             //assign default values if Month is empty
             if (String.IsNullOrEmpty(Month))
             {
                 Month = DateTime.Now.Month.ToString();
-                ViewBag.Title = "Total Cost Report for " + DateTime.Now.ToString("MMMM") + "-" + Year;
+                ViewBag.Title = "Total Cost Report for " + DateTime.Now.ToString("MMMM") + "-" + yearParameter;
             }
             else
             {
-                ViewBag.Title = "Total Cost Report for " + Month + "-" + Year;
+                ViewBag.Title = "Total Cost Report for " + Month + "-" + yearParameter;
             }
 
 
@@ -68,11 +74,11 @@ namespace Alliance_for_Life.Controllers
                                      join b in db.SubContractors on a.SubcontractorId equals b.SubcontractorId
                                      select a;
             //if year is not null
-            if (Year != null)
+            if (yearParameter != null)
             {
 
-                mymodel.AdminCosts= mymodel.AdminCosts .Where(a => a.Year == Year);
-                mymodel.ParticipationCost = mymodel.ParticipationCost.Where(a => a.Year == Year);
+                mymodel.AdminCosts= mymodel.AdminCosts .Where(a => a.Year == yearParameter);
+                mymodel.ParticipationCost = mymodel.ParticipationCost.Where(a => a.Year == yearParameter);
 
             }
             ////if month is not null

@@ -22,7 +22,8 @@
                             Search By Month: @Html.DropDownList("Month", null, "Select Month", htmlAttributes: new { @class = "form-control", onchange = "this.form.submit()" })
                         </div>
                         <div class="col-xs-5th-1 col-sm-3" style="align-content:center;">
-                            Search By Year: @Html.DropDownList("Year", null, "Select Year", htmlAttributes: new { @class = "form-control", onchange = "this.form.submit()" })
+                            @*Search By Year: @Html.DropDownList("Year", null, "Select Year", htmlAttributes: new { @class = "form-control", onchange = "this.form.submit()" })*@
+                            Search By Year: @Html.TextBox("Year", null, htmlAttributes: new { placeholder = "Select Year", @class = "form-control", onchange = "this.form.submit()", name = "Year" })
                         </div>
                         <div class="col-xs-5th-1 col-sm-3" style="align-content:center;">
                             Results per Page: @Html.DropDownList("pgSize", (IEnumerable<SelectListItem>)ViewBag.PageSize, "", htmlAttributes: new { @class = "form-control", onchange = "this.form.submit()" })
@@ -48,7 +49,8 @@
                             Search By Month: @Html.DropDownList("Month", null, "Select Month", htmlAttributes: new { @class = "form-control", onchange = "this.form.submit()" })
                         </div>
                         <div class="col-xs-5th-1 col-sm-3" style="align-content:center;">
-                            Search By Year: @Html.DropDownList("Year", null, "Select Year", htmlAttributes: new { @class = "form-control", onchange = "this.form.submit()" })
+                            @*Search By Year: @Html.DropDownList("Year", null, "Select Year", htmlAttributes: new { @class = "form-control", onchange = "this.form.submit()" })*@
+                            Search By Year: @Html.TextBox("yearPickerMain", null, htmlAttributes: new { placeholder = "Select Year", @class = "form-control", onchange = "this.form.submit()", name = "yearPicker" })
                         </div>
                         <div class="col-xs-5th-1 col-sm-3" style="align-content:center;">
                             Results per Page: @Html.DropDownList("pgSize", (IEnumerable<SelectListItem>)ViewBag.PageSize, "", htmlAttributes: new { @class = "form-control", onchange = "this.form.submit()" })
@@ -69,182 +71,182 @@
                     Delete
                 </th>
             }
+            <th>
+                Edit
+            </th>
+            <th>
+                Details
+            </th>
+            <th>
+                @Html.ActionLink("Organization", "Index", new { sortOrder = ViewBag.NameSortParm })
+            </th>
+            <th>
+                Month
+            </th>
+            <th>
+                Year
+            </th>
+            @if (!User.IsInRole("User"))
+            {
                 <th>
-                    Edit
+                    Region&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 </th>
-                <th>
-                    Details
-                </th>
-                <th>
-                    @Html.ActionLink("Organization", "Index", new { sortOrder = ViewBag.NameSortParm })
-                </th>
-                <th>
-                    Month
-                </th>
-                <th>
-                    Year
-                </th>
-                @if (!User.IsInRole("User"))
-                {
-                    <th>
-                        Region&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    </th>
-                }
-                <th>
-                    Salaries and Wages
-                </th>
-                <th>
-                    Employee Benefits
-                </th>
-                <th>
-                    Employee Travel
-                </th>
-                <th>
-                    Employee Training
-                </th>
-                <th>
-                    Office Rent
-                </th>
-                <th>
-                    Office Utilities
-                </th>
-                <th>
-                    Facility Insurance
-                </th>
-                <th>
-                    Office Supplies
-                </th>
-                <th>
-                    Office equipment/computers
-                </th>
-                <th>
-                    Office Communications
-                </th>
-                <th>
-                    Office Maintenance
-                </th>
-                <th>
-                    Consulting Fee's
-                </th>
-                <th>
-                    Janitor Services
-                </th>
-                <th>
-                    Depreciation
-                </th>
-                <th>
-                    Tech Support
-                </th>
-                <th>
-                    Security
-                </th>
-                <th>
-                    Other
-                </th>
-                <th>
-                    Other
-                </th>
-                <th>
-                    Other
-                </th>
-                <th>
-                    Total Cost
-                </th>
-                <th></th>
-            </tr>
+            }
+            <th>
+                Salaries and Wages
+            </th>
+            <th>
+                Employee Benefits
+            </th>
+            <th>
+                Employee Travel
+            </th>
+            <th>
+                Employee Training
+            </th>
+            <th>
+                Office Rent
+            </th>
+            <th>
+                Office Utilities
+            </th>
+            <th>
+                Facility Insurance
+            </th>
+            <th>
+                Office Supplies
+            </th>
+            <th>
+                Office equipment/computers
+            </th>
+            <th>
+                Office Communications
+            </th>
+            <th>
+                Office Maintenance
+            </th>
+            <th>
+                Consulting Fee's
+            </th>
+            <th>
+                Janitor Services
+            </th>
+            <th>
+                Depreciation
+            </th>
+            <th>
+                Tech Support
+            </th>
+            <th>
+                Security
+            </th>
+            <th>
+                Other
+            </th>
+            <th>
+                Other
+            </th>
+            <th>
+                Other
+            </th>
+            <th>
+                Total Cost
+            </th>
+            <th></th>
+        </tr>
 
         @foreach (var item in Model)
         {
-    <tr>
-        @if (User.IsInRole("Admin"))
-        {
+            <tr>
+                @if (User.IsInRole("Admin"))
+                {
 
-            <td>
-                @Html.ActionLink("Delete", "Delete", new { id = item.AdminCostId })
-            </td>
-        }
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.AdminCostId })
-            </td>
-            <td>
-                @Html.ActionLink("Details", "Details", new { id = item.AdminCostId })
-            </td>
-            <td>
-                @item.Subcontractor.OrgName
-            </td>
-            <td>
-                @item.Month
-            </td>
-            <td>
-                @item.Year
-            </td>
-            @if (!User.IsInRole("User"))
-            {
+                    <td>
+                        @Html.ActionLink("Delete", "Delete", new { id = item.AdminCostId })
+                    </td>
+                }
                 <td>
-                    @item.Region.GetDisplayName()
+                    @Html.ActionLink("Edit", "Edit", new { id = item.AdminCostId })
                 </td>
-            }
-            <td>
-                @item.ASalandWages.ToString("C")
-            </td>
-            <td>
-                @item.AEmpBenefits.ToString("C")
-            </td>
-            <td>
-                @item.AEmpTravel.ToString("C")
-            </td>
-            <td>
-                @item.AEmpTraining.ToString("C")
-            </td>
-            <td>
-                @item.AOfficeRent.ToString("C")
-            </td>
-            <td>
-                @item.AOfficeUtilities.ToString("C")
-            </td>
-            <td>
-                @item.AFacilityIns.ToString("C")
-            </td>
-            <td>
-                @item.AOfficeSupplies.ToString("C")
-            </td>
-            <td>
-                @item.AEquipment.ToString("C")
-            </td>
-            <td>
-                @item.AOfficeCommunications.ToString("C")
-            </td>
-            <td>
-                @item.AOfficeMaint.ToString("C")
-            </td>
-            <td>
-                @item.AConsulting.ToString("C")
-            </td>
-            <td>
-                @item.AJanitorServices.ToString("C")
-            </td>
-            <td>
-                @item.ADepreciation.ToString("C")
-            </td>
-            <td>
-                @item.ATechSupport.ToString("C")
-            </td>
-            <td>
-                @item.ASecurityServices.ToString("C")
-            </td>
-            <td>
-                @item.AOtherInput: @item.AOther.ToString("C")
-            </td>
-            <td>
-                @item.AOtherInput2: @item.AOther2.ToString("C")
-            </td>
-            <td>
-                @item.AOtherInput3: @item.AOther3.ToString("C")
-            </td>
-            <td>
-                @item.ATotCosts.ToString("C")
-            </td>
-        </tr>
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = item.AdminCostId })
+                </td>
+                <td>
+                    @item.Subcontractor.OrgName
+                </td>
+                <td>
+                    @item.Month
+                </td>
+                <td>
+                    @item.Year
+                </td>
+                @if (!User.IsInRole("User"))
+                {
+                    <td>
+                        @item.Region.GetDisplayName()
+                    </td>
+                }
+                <td>
+                    @item.ASalandWages.ToString("C")
+                </td>
+                <td>
+                    @item.AEmpBenefits.ToString("C")
+                </td>
+                <td>
+                    @item.AEmpTravel.ToString("C")
+                </td>
+                <td>
+                    @item.AEmpTraining.ToString("C")
+                </td>
+                <td>
+                    @item.AOfficeRent.ToString("C")
+                </td>
+                <td>
+                    @item.AOfficeUtilities.ToString("C")
+                </td>
+                <td>
+                    @item.AFacilityIns.ToString("C")
+                </td>
+                <td>
+                    @item.AOfficeSupplies.ToString("C")
+                </td>
+                <td>
+                    @item.AEquipment.ToString("C")
+                </td>
+                <td>
+                    @item.AOfficeCommunications.ToString("C")
+                </td>
+                <td>
+                    @item.AOfficeMaint.ToString("C")
+                </td>
+                <td>
+                    @item.AConsulting.ToString("C")
+                </td>
+                <td>
+                    @item.AJanitorServices.ToString("C")
+                </td>
+                <td>
+                    @item.ADepreciation.ToString("C")
+                </td>
+                <td>
+                    @item.ATechSupport.ToString("C")
+                </td>
+                <td>
+                    @item.ASecurityServices.ToString("C")
+                </td>
+                <td>
+                    @item.AOtherInput: @item.AOther.ToString("C")
+                </td>
+                <td>
+                    @item.AOtherInput2: @item.AOther2.ToString("C")
+                </td>
+                <td>
+                    @item.AOtherInput3: @item.AOther3.ToString("C")
+                </td>
+                <td>
+                    @item.ATotCosts.ToString("C")
+                </td>
+            </tr>
         }
     </table>
 
@@ -256,7 +258,7 @@
     <br /><br />
     @using (Html.BeginForm("Export", "AdministrationCost", FormMethod.Post, new { Year = ViewBag.Yr, Month = ViewBag.Mnth }))
     {
-        
+
         <input type="submit" value="Export to Excel" class="btn btn-group-sm btn-primary" />
     }
 
@@ -280,7 +282,24 @@
     </div>
 </div>
 
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/css/datepicker.min.css" rel="stylesheet">
+
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
     <script src="~/Scripts/MyScripts.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/js/bootstrap-datepicker.min.js"></script>
+    <script>
+        var dp = $("#Year").datepicker({
+            format: "yyyy",
+            startView: "years",
+            minViewMode: "years"
+        });
+
+        var dp = $("#yearPickerMain").datepicker({
+            format: "yyyy",
+            startView: "years",
+            minViewMode: "years"
+        });
+    </script>
 }

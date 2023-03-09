@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Alliance_for_Life.Models.A2AAllocatedBudget>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Fiscal Year")
+        </th>
+        <th>
+            @Html.DisplayName("Begining Balance")
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Year)
+        </td>
+        <td>
+            @item.BeginingBalance.ToString("c")
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.A2AAllocatedBudgetId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.A2AAllocatedBudgetId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.A2AAllocatedBudgetId })
+        </td>
+    </tr>
+}
+
+</table>
