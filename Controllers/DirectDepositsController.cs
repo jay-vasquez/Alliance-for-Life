@@ -21,7 +21,7 @@ namespace Alliance_for_Life.Controllers
         // GET: DirectDeposits
         public ActionResult Index(string sortOrder, Guid? searchString, string Month, int? Year, string currentFilter, int? page, int? pgSize)
         {
-           
+
             DirectDeposits directdepo = new DirectDeposits();
 
             ViewBag.Sub = searchString;
@@ -29,15 +29,15 @@ namespace Alliance_for_Life.Controllers
             ViewBag.Mnth = Month;
 
             ViewBag.CurrentSort = sortOrder;
-            var datelist = Enumerable.Range(System.DateTime.Now.Year-1, 5).ToList();
-            ViewBag.Year = new SelectList(datelist);
+            var datelist = Enumerable.Range(System.DateTime.Now.Year - 1, 5).ToList();
+            ViewBag.Year = Year;// new SelectList(datelist);
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.YearSortParm = sortOrder == "Year" ? "year_desc" : "Year";
             ViewBag.Subcontractor = new SelectList(db.SubContractors.OrderBy(a => a.OrgName), "SubcontractorId", "OrgName");
             ViewBag.Month = new SelectList(Enum.GetValues(typeof(Months)).Cast<Months>());
 
 
-           
+
             //looking for the searchstring
             if (searchString != null)
             {
@@ -47,10 +47,10 @@ namespace Alliance_for_Life.Controllers
             {
                 currentFilter = searchString.ToString();
             }
-           
-           var directdeposit = from a in db.AdminCosts
+
+            var directdeposit = from a in db.AdminCosts
                                 join p in db.ParticipationServices on a.SubcontractorId equals p.SubcontractorId
-                                where (a.Year ==  p.Year ) && (a.Month ==  p.Month)
+                                where (a.Year == p.Year) && (a.Month == p.Month)
                                 select new DirectDepositView
                                 {
                                     AdminCost = a,
@@ -72,13 +72,13 @@ namespace Alliance_for_Life.Controllers
             }
 
             //return data from the database
-            var depodb = db.DirectDeposit.OrderBy(a=>a.AdminCost.Subcontractor.OrgName).ToList();
+            var depodb = db.DirectDeposit.OrderBy(a => a.AdminCost.Subcontractor.OrgName).ToList();
 
             //checking for contrac
-            if(!String.IsNullOrEmpty(searchString.ToString()))
+            if (!String.IsNullOrEmpty(searchString.ToString()))
             {
-                 depodb = depodb.Where(r => r.AdminCost.SubcontractorId == searchString ).ToList();
-                
+                depodb = depodb.Where(r => r.AdminCost.SubcontractorId == searchString).ToList();
+
             }
             if (!String.IsNullOrEmpty(Month))
             {
@@ -119,14 +119,14 @@ namespace Alliance_for_Life.Controllers
         }
 
         //checking to see if the data exists on the table
-        public Boolean checkdeposit(Guid AdminID, Guid PatriID )
+        public Boolean checkdeposit(Guid AdminID, Guid PatriID)
         {
             var adddeposit = false;
             var deposit = db.DirectDeposit
                 .Where(a => a.AdminCost.AdminCostId == AdminID)
                 .Where(a => a.ParticipationService.PSId == PatriID).ToList();
 
-            if(deposit.Count() == 0)
+            if (deposit.Count() == 0)
             {
                 adddeposit = true;
             }
@@ -175,8 +175,8 @@ namespace Alliance_for_Life.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.Subcontractor = db.SubContractors.Find( directDeposits.AdminCost.SubcontractorId).OrgName;
-                                 
+            ViewBag.Subcontractor = db.SubContractors.Find(directDeposits.AdminCost.SubcontractorId).OrgName;
+
             return View(directDeposits);
         }
 
@@ -199,7 +199,7 @@ namespace Alliance_for_Life.Controllers
         }
 
         // GET: DirectDeposits/Delete/5
-       
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -209,11 +209,11 @@ namespace Alliance_for_Life.Controllers
             base.Dispose(disposing);
         }
         //export excel sheets
-        
+
         [HttpPost]
         public FileResult Export(string Month, int? Year)
         {
-           
+
             DataTable dt = new DataTable("Direct Deposit");
             dt.Columns.AddRange(new DataColumn[8]
             {
@@ -227,7 +227,7 @@ namespace Alliance_for_Life.Controllers
                 new DataColumn ("3%"),
                 new DataColumn ("Subcontractor Direct Deposit Total"),
             });
-            
+
             var directdeposit = from a in db.AdminCosts
                                 join p in db.ParticipationServices on a.SubcontractorId equals p.SubcontractorId
                                 where (a.Year == p.Year) && (a.Month == p.Month)
@@ -245,17 +245,17 @@ namespace Alliance_for_Life.Controllers
             {
                 directdeposit = directdeposit.Where(b => b.AdminCost.Year == Year && b.ParticipationService.Year == Year);
             }
-         //   directdeposit = directdeposit.Where(a => a.AdminCost.Year == Year && a.ParticipationService.Year == Year).Where(b => b.AdminCost.Month.ToString() == Month && b.ParticipationService.Month.ToString() == Month);
+            //   directdeposit = directdeposit.Where(a => a.AdminCost.Year == Year && a.ParticipationService.Year == Year).Where(b => b.AdminCost.Month.ToString() == Month && b.ParticipationService.Month.ToString() == Month);
 
             var subs = db.SubContractors.ToList();
 
             //orderby year / month / orgname
-            foreach (var item in directdeposit.OrderBy(a=>a.AdminCost.Year).OrderBy(a=>a.AdminCost.Month).ThenBy(a=>a.AdminCost.Subcontractor.OrgName))
+            foreach (var item in directdeposit.OrderBy(a => a.AdminCost.Year).OrderBy(a => a.AdminCost.Month).ThenBy(a => a.AdminCost.Subcontractor.OrgName))
             {
-               
+
                 //finding subcontractor information
-                dt.Rows.Add(subs.Where(a=>a.SubcontractorId == item.AdminCost.SubcontractorId).FirstOrDefault().EIN, subs.Where(a => a.SubcontractorId == item.AdminCost.SubcontractorId).FirstOrDefault().OrgName,item.AdminCost.Year,item.AdminCost.Month ,(item.AdminCost.ATotCosts + item.ParticipationService.PTotals).ToString("C"), item.AdminCost.ATotCosts.ToString("C")
-                   , (item.AdminCost.ATotCosts * 0.03).ToString("C"), (item.AdminCost.ATotCosts + item.ParticipationService.PTotals - item.AdminCost.ATotCosts * 0.03).ToString("C") );
+                dt.Rows.Add(subs.Where(a => a.SubcontractorId == item.AdminCost.SubcontractorId).FirstOrDefault().EIN, subs.Where(a => a.SubcontractorId == item.AdminCost.SubcontractorId).FirstOrDefault().OrgName, item.AdminCost.Year, item.AdminCost.Month, (item.AdminCost.ATotCosts + item.ParticipationService.PTotals).ToString("C"), item.AdminCost.ATotCosts.ToString("C")
+                   , (item.AdminCost.ATotCosts * 0.02).ToString("C"), (item.AdminCost.ATotCosts + item.ParticipationService.PTotals - item.AdminCost.ATotCosts * 0.02).ToString("C"));
             }
 
             using (XLWorkbook wb = new XLWorkbook())

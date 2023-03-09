@@ -162,3 +162,181 @@ C:\Users\Manoj\Documents\GitHub\Alliance-for-Life\bin\System.Web.WebPages.xml
 C:\Users\Manoj\Documents\GitHub\Alliance-for-Life\bin\System.Web.WebPages.Deployment.xml
 C:\Users\Manoj\Documents\GitHub\Alliance-for-Life\bin\System.Web.WebPages.Razor.xml
 C:\Users\Manoj\Documents\GitHub\Alliance-for-Life\obj\Release\Alliance for Life.csprojAssemblyReference.cache
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\ApplicationInsights.config
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\Alliance for Life.dll.config
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\Alliance for Life.dll
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\Alliance for Life.pdb
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\Antlr3.Runtime.dll
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\ClosedXML.dll
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\DocumentFormat.OpenXml.dll
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\EntityFramework.dll
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\EntityFramework.SqlServer.dll
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\ExcelNumberFormat.dll
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\FastMember.Signed.dll
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\Microsoft.AI.Web.dll
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\Microsoft.ApplicationInsights.dll
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\Microsoft.Owin.dll
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\Microsoft.Owin.Security.dll
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\Newtonsoft.Json.dll
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\PagedList.dll
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\PagedList.Mvc.dll
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\Rotativa.dll
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\System.Linq.Dynamic.dll
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\System.Net.Http.Formatting.dll
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\System.Web.Helpers.dll
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\System.Web.Http.dll
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\System.Web.Http.WebHost.dll
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\System.Web.Mvc.dll
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\System.Web.Razor.dll
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\System.Web.WebPages.dll
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\System.Web.WebPages.Razor.dll
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\WebGrease.dll
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\Antlr3.Runtime.pdb
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\ClosedXML.xml
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\DocumentFormat.OpenXml.xml
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\EntityFramework.xml
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\EntityFramework.SqlServer.xml
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\ExcelNumberFormat.xml
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\Microsoft.AI.Web.xml
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\Microsoft.ApplicationInsights.xml
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\Microsoft.Owin.xml
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\Microsoft.Owin.Security.xml
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\Newtonsoft.Json.xml
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\PagedList.xml
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\PagedList.Mvc.xml
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\System.Net.Http.Formatting.xml
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\System.Web.Helpers.xml
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\System.Web.Http.xml
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\System.Web.Http.WebHost.xml
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\System.Web.Mvc.xml
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\System.Web.Razor.xml
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\System.Web.WebPages.xml
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\bin\System.Web.WebPages.Razor.xml
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\obj\Release\Alliance for Life.csproj.AssemblyReference.cache
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\obj\Release\Alliance_for_Life.Migrations.initialcreation.resources
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\obj\Release\Alliance_for_Life.Migrations.updateddirectdeposit.resources
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\obj\Release\Alliance_for_Life.Migrations.surveyupdated.resources
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\obj\Release\Alliance for Life.csproj.GenerateResource.cache
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\obj\Release\Alliance for Life.csproj.CoreCompileInputs.cache
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\obj\Release\Alliance for Life.csproj.CopyComplete
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\obj\Release\Alliance for Life.dll
+C:\Users\Joe Mark\Documents\Projects\Alliance-for-Life\obj\Release\Alliance for Life.pdb
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\ApplicationInsights.config
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\Alliance for Life.dll.config
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\Alliance for Life.dll
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\Alliance for Life.pdb
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\Antlr3.Runtime.dll
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\ClosedXML.dll
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\DocumentFormat.OpenXml.dll
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\EntityFramework.dll
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\EntityFramework.SqlServer.dll
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\ExcelNumberFormat.dll
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\FastMember.Signed.dll
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\Microsoft.AI.Web.dll
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\Microsoft.ApplicationInsights.dll
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\Microsoft.Owin.dll
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\Microsoft.Owin.Security.dll
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\Newtonsoft.Json.dll
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\PagedList.dll
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\PagedList.Mvc.dll
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\Rotativa.dll
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\System.Linq.Dynamic.dll
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\System.Net.Http.Formatting.dll
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\System.Web.Helpers.dll
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\System.Web.Http.dll
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\System.Web.Http.WebHost.dll
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\System.Web.Mvc.dll
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\System.Web.Razor.dll
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\System.Web.WebPages.dll
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\System.Web.WebPages.Razor.dll
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\WebGrease.dll
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\Antlr3.Runtime.pdb
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\ClosedXML.xml
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\DocumentFormat.OpenXml.xml
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\EntityFramework.xml
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\EntityFramework.SqlServer.xml
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\ExcelNumberFormat.xml
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\Microsoft.AI.Web.xml
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\Microsoft.ApplicationInsights.xml
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\Microsoft.Owin.xml
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\Microsoft.Owin.Security.xml
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\Newtonsoft.Json.xml
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\PagedList.xml
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\PagedList.Mvc.xml
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\System.Net.Http.Formatting.xml
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\System.Web.Helpers.xml
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\System.Web.Http.xml
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\System.Web.Http.WebHost.xml
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\System.Web.Mvc.xml
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\System.Web.Razor.xml
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\System.Web.WebPages.xml
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\bin\System.Web.WebPages.Razor.xml
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\obj\Release\Alliance for Life.csproj.AssemblyReference.cache
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\obj\Release\Alliance_for_Life.Migrations.initialcreation.resources
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\obj\Release\Alliance_for_Life.Migrations.updateddirectdeposit.resources
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\obj\Release\Alliance_for_Life.Migrations.surveyupdated.resources
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\obj\Release\Alliance for Life.csproj.GenerateResource.cache
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\obj\Release\Alliance for Life.csproj.CoreCompileInputs.cache
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\obj\Release\Alliance for Life.csproj.CopyComplete
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\obj\Release\Alliance for Life.dll
+C:\Users\Public\Project Files\Alliance-for-Life-Updated\obj\Release\Alliance for Life.pdb

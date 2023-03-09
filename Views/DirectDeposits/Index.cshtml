@@ -1,7 +1,7 @@
 ﻿@model PagedList.IPagedList<Alliance_for_Life.Models.DirectDeposits>
-    @using PagedList.Mvc
+@using PagedList.Mvc
 @{
- 
+
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -17,7 +17,8 @@
                     Search By Organization: @Html.DropDownList("searchString", (IEnumerable<SelectListItem>)ViewBag.Subcontractor, "", htmlAttributes: new { @class = "form-control", onchange = "this.form.submit()" })
                 </div>
                 <div class="col-xs-5th-1 col-sm-3" style="align-content:center;">
-                    Search By Year: @Html.DropDownList("Year", null, "Select Year", htmlAttributes: new { @class = "form-control", sortOrder = ViewBag.DateSortParm, currentFilter = ViewBag.CurrentFilter, onchange = "this.form.submit()", name = "Year" })
+                    Search By Year: @Html.TextBox("Year", null, htmlAttributes: new { placeholder = "Select Year", @class = "form-control", onchange = "this.form.submit()", name = "Year" })
+                    @*Search By Year: @Html.DropDownList("Year", null, "Select Year", htmlAttributes: new { @class = "form-control", sortOrder = ViewBag.DateSortParm, currentFilter = ViewBag.CurrentFilter, onchange = "this.form.submit()", name = "Year" })*@
                 </div>
                 <div class="col-xs-5th-1 col-sm-3" style="align-content:center;">
                     Search By Month: @Html.DropDownList("Month", null, "Select Month", htmlAttributes: new { @class = "form-control", sortOrder = ViewBag.DateSortParm, currentFilter = ViewBag.CurrentFilter, onchange = "this.form.submit()", name = "Month" })
@@ -85,12 +86,12 @@
                 </td>
                 <td>
 
-                    @Math.Round(items.AdminCost.ATotCosts * 0.03, 2).ToString("C")
+                    @Math.Round(items.AdminCost.ATotCosts * 0.02, 2).ToString("C")
 
 
                 </td>
                 <td>
-                    @Math.Round((items.AdminCost.ATotCosts + items.ParticipationService.PTotals) - items.AdminCost.ATotCosts * 0.03, 2).ToString("C")
+                    @Math.Round((items.AdminCost.ATotCosts + items.ParticipationService.PTotals) - items.AdminCost.ATotCosts * 0.02, 2).ToString("C")
 
                 </td>
                 <td>
@@ -136,12 +137,12 @@
             </td>
             <td>
 
-                @Math.Round(Model.Sum(a => a.AdminCost.ATotCosts * 0.03), 2).ToString("C")
+                @Math.Round(Model.Sum(a => a.AdminCost.ATotCosts * 0.02), 2).ToString("C")
 
 
             </td>
             <td>
-                @Math.Round((Model.Sum(a => a.AdminCost.ATotCosts) + Model.Sum(a => a.ParticipationService.PTotals)) - Model.Sum(a => a.AdminCost.ATotCosts * 0.03), 2).ToString("C")
+                @Math.Round((Model.Sum(a => a.AdminCost.ATotCosts) + Model.Sum(a => a.ParticipationService.PTotals)) - Model.Sum(a => a.AdminCost.ATotCosts * 0.02), 2).ToString("C")
 
             </td>
             <td>
@@ -152,29 +153,44 @@
 
     </table>
     <br />
- 
 
 
-        @using (Html.BeginForm("Export", "DirectDeposits", FormMethod.Post))
-        {
-            <input type="submit" value="Export to Excel" class="btn btn-group-sm btn-primary" onclick="this.form.submit()" />
-        }
+
+    @using (Html.BeginForm("Export", "DirectDeposits", FormMethod.Post))
+    {
+        <input type="submit" value="Export to Excel" class="btn btn-group-sm btn-primary" onclick="this.form.submit()" />
+    }
 
 
+    <div class="container-fluid">
+        <br />
         <div class="container-fluid">
-            <br />
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-sm-2">
-                        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+            <div class="row">
+                <div class="col-sm-2">
+                    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 
-                        @Html.PagedListPager(Model, page => Url.Action("Index",
-                         new { searchString = ViewBag.Sub, Year = ViewBag.Yr, Month = ViewBag.Mnth, page, pgSize = ViewBag.psize }))
-                    </div>
+                    @Html.PagedListPager(Model, page => Url.Action("Index",
+                     new { searchString = ViewBag.Sub, Year = ViewBag.Yr, Month = ViewBag.Mnth, page, pgSize = ViewBag.psize }))
                 </div>
             </div>
-
         </div>
 
+    </div>
+
 </form>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/css/datepicker.min.css" rel="stylesheet">
+
+@section Scripts {
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/js/bootstrap-datepicker.min.js"></script>
+    <script>
+        var dp = $("#Year").datepicker({
+            format: "yyyy",
+            startView: "years",
+            minViewMode: "years"
+        });
+    </script>
+}
 

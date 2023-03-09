@@ -1,0 +1,1063 @@
+﻿@model PagedList.IPagedList<Alliance_for_Life.Models.AllocatedBudget>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "Balance Sheet Reports";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="color:green; text-align:center;">@ViewBag.ReportTitle</h2>
+<hr />
+<div class="container-fluid">
+    <form>
+        @using (Html.BeginForm())
+        {
+            <br />
+            <div class="container-fluid" style="padding-left: 15px;">
+                <div class="row">
+                    <div class="col-xs-5th-1 col-sm-6">
+                        @*Fiscal Year Search: @Html.DropDownList("Year", null, "Select Year", htmlAttributes: new { @class = "form-control", onchange = "this.form.submit()" })*@
+                        Fiscal Year Search: @Html.TextBox("Year", null, htmlAttributes: new { placeholder = "Select Year", @class = "form-control", onchange = "this.form.submit()", name = "Year" })
+                    </div>
+                </div>
+            </div>
+        }
+    </form>
+</div>
+
+<br />
+@*<p style="color:red; text-align:center;">
+        @ViewBag.error
+    </p>*@
+
+<table id="dtBasicExample" class="table table-striped table-bordered table-sm" style="font-size:16px" cellspacing="0" width="100">
+    <tr>
+    <thead>
+        <tr style="font-size:13px; text-align:center; background-color:#d1f5b1;">
+            <th class="th-sm">
+
+            </th>
+            <th class="th-sm tablehearder">
+                @Html.DisplayName("July")
+            </th>
+            <th class="th-sm tablehearder">
+                @Html.DisplayName("August")
+            </th>
+            <th class="th-sm tablehearder">
+                @Html.DisplayName("September")
+            </th>
+            <th class="th-sm tablehearder">
+                @Html.DisplayName("October")
+            </th>
+            <th class="th-sm tablehearder">
+                @Html.DisplayName("November")
+            </th>
+            <th class="th-sm tablehearder">
+                @Html.DisplayName("December")
+            </th>
+            <th class="th-sm tablehearder">
+                @Html.DisplayName("January")
+            </th>
+            <th class="th-sm tablehearder">
+                @Html.DisplayName("February")
+            </th>
+            <th class="th-sm tablehearder">
+                @Html.DisplayName("March")
+            </th>
+            <th class="th-sm tablehearder">
+                @Html.DisplayName("April")
+            </th>
+            <th class="th-sm tablehearder">
+                @Html.DisplayName("May")
+            </th>
+            <th class="th-sm tablehearder">
+                @Html.DisplayName("June")
+            </th>
+            <th class="th-sm tablehearder">
+                Total
+            </th>
+        <tr />
+        <tr style="font-size:13px; text-align:center;">
+            <th class="th-sm">
+                Direct Admin Cost
+            </th>
+            <td>
+                @String.Format("{0:C}", ViewBag.JulFee)
+            </td>
+            <td>
+                @String.Format("{0:C}", ViewBag.AugFee)
+            </td>
+            <td>
+                @String.Format("{0:C}", ViewBag.SepFee)
+            </td>
+            <td>
+                @String.Format("{0:C}", ViewBag.OctFee)
+            </td>
+            <td>
+                @String.Format("{0:C}", ViewBag.NovFee)
+            </td>
+            <td>
+                @String.Format("{0:C}", ViewBag.DecFee)
+            </td>
+            <td>
+                @String.Format("{0:C}", ViewBag.JanFee)
+            </td>
+            <td>
+                @String.Format("{0:C}", ViewBag.FebFee)
+            </td>
+            <td>
+                @String.Format("{0:C}", ViewBag.MarFee)
+            </td>
+            <td>
+                @String.Format("{0:C}", ViewBag.AprFee)
+            </td>
+            <td>
+                @String.Format("{0:C}", ViewBag.MayFee)
+            </td>
+            <td>
+                @String.Format("{0:C}", ViewBag.JunFee)
+            </td>
+            <td style="background-color:#fedada">
+                @String.Format("{0:C}", ViewBag.TotalFee)
+
+
+            </td>
+        <tr />
+        <tr style="font-size:13px; text-align:center;">
+            <th class="th-sm">
+                Participation Cost
+            </th>
+            <td>
+                @String.Format("{0:C}", ViewBag.JulPFee)
+            </td>
+            <td>
+                @String.Format("{0:C}", ViewBag.AugPFee)
+            </td>
+            <td>
+                @String.Format("{0:C}", ViewBag.SepPFee)
+            </td>
+            <td>
+                @String.Format("{0:C}", ViewBag.OctPFee)
+            </td>
+            <td>
+                @String.Format("{0:C}", ViewBag.NovPFee)
+            </td>
+            <td>
+                @String.Format("{0:C}", ViewBag.DecPFee)
+            </td>
+            <td>
+                @String.Format("{0:C}", ViewBag.JanPFee)
+            </td>
+            <td>
+                @String.Format("{0:C}", ViewBag.FebPFee)
+            </td>
+            <td>
+                @String.Format("{0:C}", ViewBag.MarPFee)
+            </td>
+            <td>
+                @String.Format("{0:C}", ViewBag.AprPFee)
+            </td>
+            <td>
+                @String.Format("{0:C}", ViewBag.MayPFee)
+            </td>
+            <td>
+                @String.Format("{0:C}", ViewBag.JunPFee)
+            </td>
+            <td style="background-color:#fedada">
+                @String.Format("{0:C}", ViewBag.TotalPFee)
+            </td>
+        <tr />
+        <tr style="font-size:13px; text-align:center;">
+            <th class="th-sm">
+                Total Program Cost
+            </th>
+            <td>
+                @String.Format("{0:C}", ViewBag.JulPFee + ViewBag.JulFee)
+            </td>
+            <td>
+                @String.Format("{0:C}", ViewBag.AugPFee + ViewBag.AugFee)
+            </td>
+            <td>
+                @String.Format("{0:C}", ViewBag.SepPFee + ViewBag.SepFee)
+            </td>
+            <td>
+                @String.Format("{0:C}", ViewBag.OctPFee + ViewBag.OctFee)
+            </td>
+            <td>
+                @String.Format("{0:C}", ViewBag.NovPFee + ViewBag.NovFee)
+            </td>
+            <td>
+                @String.Format("{0:C}", ViewBag.DecPFee + ViewBag.DecFee)
+            </td>
+            <td>
+                @String.Format("{0:C}", ViewBag.JanPFee + ViewBag.JanFee)
+            </td>
+            <td>
+                @String.Format("{0:C}", ViewBag.FebPFee + ViewBag.FebFee)
+            </td>
+            <td>
+                @String.Format("{0:C}", ViewBag.MarPFee + ViewBag.MarFee)
+            </td>
+            <td>
+                @String.Format("{0:C}", ViewBag.AprPFee + ViewBag.AprFee)
+            </td>
+            <td>
+                @String.Format("{0:C}", ViewBag.MayPFee + ViewBag.MayFee)
+            </td>
+            <td>
+                @String.Format("{0:C}", ViewBag.JunPFee + ViewBag.JunFee)
+            </td>
+            <td style="background-color:#fedada">
+                @String.Format("{0:C}", ViewBag.TotalPFee + ViewBag.TotalFee)
+            </td>
+        <tr />
+        <tr style="font-size:13px; text-align:center;">
+            <th class="th-sm">
+                AFL 10% Admin Fee
+            </th>
+            <td>
+                @String.Format("{0:C}", ViewBag.JulFee * 0.1)
+            </td>
+            <td>
+                @String.Format("{0:C}", ViewBag.AugFee * 0.1)
+            </td>
+            <td>
+                @String.Format("{0:C}", ViewBag.SepFee * 0.1)
+            </td>
+            <td>
+                @String.Format("{0:C}", ViewBag.OctFee * 0.1)
+            </td>
+            <td>
+                @String.Format("{0:C}", ViewBag.NovFee * 0.1)
+            </td>
+            <td>
+                @String.Format("{0:C}", ViewBag.DecFee * 0.1)
+            </td>
+            <td>
+                @String.Format("{0:C}", ViewBag.JanFee * 0.1)
+            </td>
+            <td>
+                @String.Format("{0:C}", ViewBag.FebFee * 0.1)
+            </td>
+            <td>
+                @String.Format("{0:C}", ViewBag.MarFee * 0.1)
+            </td>
+            <td>
+                @String.Format("{0:C}", ViewBag.AprFee * 0.1)
+            </td>
+            <td>
+                @String.Format("{0:C}", ViewBag.MayFee * 0.1)
+            </td>
+            <td>
+                @String.Format("{0:C}", ViewBag.JunFee * 0.1)
+            </td>
+            <td style="background-color:#fedada">
+                @String.Format("{0:C}", (ViewBag.TotalFee * 0.1))
+
+                @*@String.Format("{0:C}", ( ViewBag.JanFee + ViewBag.FebFee + ViewBag.MarFee + ViewBag.AprFee + ViewBag.MayFee + ViewBag.JunFee + ViewBag.JulFee + ViewBag.AugFee + ViewBag.SepFee + ViewBag.OctFee + ViewBag.NovFee + ViewBag.DecFee))*@
+            </td>
+        <tr />
+        <tr style="font-size:13px; text-align:center;">
+            <th class="th-sm">
+                Total Invoice
+            </th>
+            <td>
+                @String.Format("{0:C}", ViewBag.JulPFee + ViewBag.JulFee + ViewBag.JulFee * 0.1)
+            </td>
+            <td>
+                @String.Format("{0:C}", ViewBag.AugPFee + ViewBag.AugFee + ViewBag.AugFee * 0.1)
+            </td>
+            <td>
+                @String.Format("{0:C}", ViewBag.SepPFee + ViewBag.SepFee + ViewBag.SepFee * 0.1)
+            </td>
+            <td>
+                @String.Format("{0:C}", ViewBag.OctPFee + ViewBag.OctFee + ViewBag.OctFee * 0.1)
+            </td>
+            <td>
+                @String.Format("{0:C}", ViewBag.NovPFee + ViewBag.NovFee + ViewBag.NovFee * 0.1)
+            </td>
+            <td>
+                @String.Format("{0:C}", ViewBag.DecPFee + ViewBag.DecFee + ViewBag.DecFee * 0.1)
+            </td>
+            <td>
+                @String.Format("{0:C}", ViewBag.JanPFee + ViewBag.JanFee + ViewBag.JanFee * 0.1)
+            </td>
+            <td>
+                @String.Format("{0:C}", ViewBag.FebPFee + ViewBag.FebFee + ViewBag.FebFee * 0.1)
+            </td>
+            <td>
+                @String.Format("{0:C}", ViewBag.MarPFee + ViewBag.MarFee + ViewBag.MarFee * 0.1)
+            </td>
+            <td>
+                @String.Format("{0:C}", ViewBag.AprPFee + ViewBag.AprFee + ViewBag.AprFee * 0.1)
+            </td>
+            <td>
+                @String.Format("{0:C}", ViewBag.MayPFee + ViewBag.MayFee + ViewBag.MayFee * 0.1)
+            </td>
+            <td>
+                @String.Format("{0:C}", ViewBag.JunPFee + ViewBag.JunFee + ViewBag.JunFee * 0.1)
+            </td>
+            <td style="background-color:#fedada">
+                @String.Format("{0:C}", ViewBag.TotalPFee + ViewBag.TotalFee + ViewBag.TotalFee * 0.1)
+            </td>
+        <tr />
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td> </td>
+            <td></td>
+            <td></td>
+            <td> </td>
+            <td></td>
+            <td> </td>
+        </tr>
+        <tr style="font-size:13px; text-align:center;">
+            <th class="th-sm">
+                3% Management Fee
+            </th>
+            <td>
+                @String.Format("{0:C}", ViewBag.JulFee * 0.03)
+            </td>
+            <td>
+                @String.Format("{0:C}", ViewBag.AugFee * 0.03)
+            </td>
+            <td>
+                @String.Format("{0:C}", ViewBag.SepFee * 0.03)
+            </td>
+            <td>
+                @String.Format("{0:C}", ViewBag.OctFee * 0.03)
+            </td>
+            <td>
+                @String.Format("{0:C}", ViewBag.NovFee * 0.03)
+            </td>
+            <td>
+                @String.Format("{0:C}", ViewBag.DecFee * 0.03)
+            </td>
+            <td>
+                @String.Format("{0:C}", ViewBag.JanFee * 0.03)
+            </td>
+            <td>
+                @String.Format("{0:C}", ViewBag.FebFee * 0.03)
+            </td>
+            <td>
+                @String.Format("{0:C}", ViewBag.MarFee * 0.03)
+            </td>
+            <td>
+                @String.Format("{0:C}", ViewBag.AprFee * 0.03)
+            </td>
+            <td>
+                @String.Format("{0:C}", ViewBag.MayFee * 0.03)
+            </td>
+            <td>
+                @String.Format("{0:C}", ViewBag.JunFee * 0.03)
+            </td>
+            <td style="background-color:#fedada">
+                @String.Format("{0:C}", ViewBag.TotalFee * 0.03)
+            </td>
+
+        <tr />
+    </thead>
+</table>
+
+<table id="dtBasicExample" class="table table-striped table-bordered table-sm" style="font-size:16px" cellspacing="0" width="100">
+    <tr>
+    <thead>
+        <tr style="font-size:13px; text-align:center; background-color:#d1f5b1;">
+            <th class="th-sm">
+
+            </th>
+            <th class="th-sm">
+                @Html.DisplayName("July")
+            </th>
+            <th class="th-sm">
+                @Html.DisplayName("August")
+            </th>
+            <th class="th-sm">
+                @Html.DisplayName("September")
+            </th>
+            <th class="th-sm">
+                @Html.DisplayName("October")
+            </th>
+            <th class="th-sm">
+                @Html.DisplayName("November")
+            </th>
+            <th class="th-sm">
+                @Html.DisplayName("December")
+            </th>
+            <th class="th-sm">
+                @Html.DisplayName("January")
+            </th>
+            <th class="th-sm">
+                @Html.DisplayName("February")
+            </th>
+            <th class="th-sm">
+                @Html.DisplayName("March")
+            </th>
+            <th class="th-sm">
+                @Html.DisplayName("April")
+            </th>
+            <th class="th-sm">
+                @Html.DisplayName("May")
+            </th>
+            <th class="th-sm">
+                @Html.DisplayName("June")
+            </th>
+            <th>
+                Total
+            </th>
+        <tr />
+        <tr style="font-size:13px; text-align:center;">
+            <th class="th-sm">
+                Beginning Balance
+            </th>
+            <td>
+                @Html.Encode("$0.00")
+            </td>
+            @if (ViewBag.AugBeg < 0)
+            {
+                <td style="color: red;">
+                    @ViewBag.AugBeg.ToString("C")
+                </td>
+            }
+            else
+            {
+                <td>
+                    @ViewBag.AugBeg.ToString("C")
+                </td>
+            }
+
+            @if (ViewBag.SepBeg < 0)
+            {
+                <td style="color: red;">
+                    @ViewBag.SepBeg.ToString("C")
+                </td>
+            }
+            else
+            {
+                <td>
+                    @ViewBag.SepBeg.ToString("C")
+                </td>
+            }
+
+            @if (ViewBag.OctBeg < 0)
+            {
+                <td style="color: red;">
+                    @ViewBag.OctBeg.ToString("C")
+                </td>
+            }
+            else
+            {
+                <td>
+                    @ViewBag.OctBeg.ToString("C")
+                </td>
+            }
+
+            @if (ViewBag.NovBeg < 0)
+            {
+                <td style="color: red;">
+                    @ViewBag.NovBeg.ToString("C")
+                </td>
+            }
+            else
+            {
+                <td>
+                    @ViewBag.NovBeg.ToString("C")
+                </td>
+            }
+
+            @if (ViewBag.DecBeg < 0)
+            {
+                <td style="color: red;">
+                    @ViewBag.DecBeg.ToString("C")
+                </td>
+            }
+            else
+            {
+                <td>
+                    @ViewBag.DecBeg.ToString("C")
+                </td>
+            }
+
+            @if (ViewBag.JanBeg < 0)
+            {
+                <td style="color: red;">
+                    @ViewBag.JanBeg.ToString("C")
+                </td>
+            }
+            else
+            {
+                <td>
+                    @ViewBag.JanBeg.ToString("C")
+                </td>
+            }
+
+            @if (ViewBag.FebBeg < 0)
+            {
+                <td style="color: red;">
+                    @ViewBag.FebBeg.ToString("C")
+                </td>
+            }
+            else
+            {
+                <td>
+                    @ViewBag.FebBeg.ToString("C")
+                </td>
+            }
+
+            @if (ViewBag.MarBeg < 0)
+            {
+                <td style="color: red;">
+                    @ViewBag.MarBeg.ToString("C")
+                </td>
+            }
+            else
+            {
+                <td>
+                    @ViewBag.MarBeg.ToString("C")
+                </td>
+            }
+
+            @if (ViewBag.AprBeg < 0)
+            {
+                <td style="color: red;">
+                    @ViewBag.AprBeg.ToString("C")
+                </td>
+            }
+            else
+            {
+                <td>
+                    @ViewBag.AprBeg.ToString("C")
+                </td>
+            }
+
+            @if (ViewBag.MayBeg < 0)
+            {
+                <td style="color: red;">
+                    @ViewBag.MayBeg.ToString("C")
+                </td>
+            }
+            else
+            {
+                <td>
+                    @ViewBag.MayBeg.ToString("C")
+                </td>
+            }
+
+            @if (ViewBag.JunBeg < 0)
+            {
+                <td style="color: red;">
+                    @ViewBag.JunBeg.ToString("C")
+                </td>
+            }
+            else
+            {
+                <td>
+                    @ViewBag.JunBeg.ToString("C")
+                </td>
+            }
+
+            <td style="background-color:#fedada">
+                @* @Math.Round(ViewBag.AugBeg + ViewBag.SepBeg + ViewBag.OctBeg + ViewBag.NovBeg + ViewBag.DecBeg + ViewBag.JanBeg + ViewBag.FebBeg + ViewBag.MarBeg + ViewBag.AprBeg + ViewBag.MayBeg + ViewBag.JunBeg).ToString("C")*@
+            </td>
+        <tr />
+        <tr style="font-size:13px; text-align:center;">
+            <th class="th-sm">
+                State Deposits
+            </th>
+            <td>
+                @ViewBag.DepoJul.ToString("C")
+            </td>
+            <td>
+                @ViewBag.DepoAug.ToString("C")
+            </td>
+            <td>
+                @ViewBag.DepoSep.ToString("C")
+            </td>
+            <td>
+                @ViewBag.DepoOct.ToString("C")
+            </td>
+            <td>
+                @ViewBag.DepoNov.ToString("C")
+            </td>
+            <td>
+                @ViewBag.DepoDec.ToString("C")
+            </td>
+            <td>
+                @ViewBag.DepoJan.ToString("C")
+            </td>
+            <td>
+                @ViewBag.DepoFeb.ToString("C")
+            </td>
+            <td>
+                @ViewBag.DepoMar.ToString("C")
+            </td>
+            <td>
+                @ViewBag.DepoApr.ToString("C")
+            </td>
+            <td>
+                @ViewBag.DepoMay.ToString("C")
+            </td>
+            <td>
+                @ViewBag.Depojun.ToString("C")
+            </td>
+            <td style="background-color:#fedada">
+                @ViewBag.StateDeposit.ToString("c")
+
+            </td>
+        <tr />
+        <tr style="font-size:13px; text-align:center;">
+            <th class="th-sm">
+                Total $ Available
+            </th>
+            @if (ViewBag.JulTot < 0)
+            {
+                <td style="color: red;">
+                    @ViewBag.JulTot.ToString("C")
+                </td>
+            }
+            else
+            {
+                <td>
+                    @ViewBag.JulTot.ToString("C")
+                </td>
+            }
+
+            @if (ViewBag.AugTot < 0)
+            {
+                <td style="color: red;">
+                    @ViewBag.AugTot.ToString("C")
+                </td>
+            }
+            else
+            {
+                <td>
+                    @ViewBag.AugTot.ToString("C")
+                </td>
+            }
+
+            @if (ViewBag.SepTot < 0)
+            {
+                <td style="color: red;">
+                    @ViewBag.SepTot.ToString("C")
+                </td>
+            }
+            else
+            {
+                <td>
+                    @ViewBag.SepTot.ToString("C")
+                </td>
+            }
+
+            @if (ViewBag.OctTot < 0)
+            {
+                <td style="color: red;">
+                    @ViewBag.OctTot.ToString("C")
+                </td>
+            }
+            else
+            {
+                <td>
+                    @ViewBag.OctTot.ToString("C")
+                </td>
+            }
+
+            @if (ViewBag.NovTot < 0)
+            {
+                <td style="color: red;">
+                    @ViewBag.NovTot.ToString("C")
+                </td>
+            }
+            else
+            {
+                <td>
+                    @ViewBag.NovTot.ToString("C")
+                </td>
+            }
+
+            @if (ViewBag.DecTot < 0)
+            {
+                <td style="color: red;">
+                    @ViewBag.DecTot.ToString("C")
+                </td>
+            }
+            else
+            {
+                <td>
+                    @ViewBag.DecTot.ToString("C")
+                </td>
+            }
+
+            @if (ViewBag.JanTot < 0)
+            {
+                <td style="color: red;">
+                    @ViewBag.JanTot.ToString("C")
+                </td>
+            }
+            else
+            {
+                <td>
+                    @ViewBag.JanTot.ToString("C")
+                </td>
+            }
+
+            @if (ViewBag.FebTot < 0)
+            {
+                <td style="color: red;">
+                    @ViewBag.FebTot.ToString("C")
+                </td>
+            }
+            else
+            {
+                <td>
+
+
+                    @ViewBag.FebTot.ToString("C")
+                </td>
+            }
+
+            @if (ViewBag.MarTot < 0)
+            {
+                <td style="color: red;">
+                    @ViewBag.MarTot.ToString("C")
+                </td>
+            }
+            else
+            {
+                <td>
+                    @ViewBag.MarTot.ToString("C")
+                </td>
+            }
+
+            @if (ViewBag.AprTot < 0)
+            {
+                <td style="color: red;">
+                    @ViewBag.AprTot.ToString("C")
+
+                </td>
+            }
+            else
+            {
+                <td>
+                    @ViewBag.AprTot.ToString("C")
+
+                </td>
+            }
+
+            @if (ViewBag.MayTot < 0)
+            {
+                <td style="color: red;">
+                    @ViewBag.MayTot.ToString("C")
+                </td>
+            }
+            else
+            {
+                <td>
+                    @ViewBag.MayTot.ToString("C")
+                </td>
+            }
+
+            @if (ViewBag.JunTot < 0)
+            {
+                <td style="color: red;">
+                    @ViewBag.JunTot.ToString("C")
+                </td>
+            }
+            else
+            {
+                <td>
+                    @ViewBag.JunTot.ToString("C")
+                </td>
+            }
+
+            <td style="background-color:#fedada">
+                @* @Math.Round(((ViewBag.JunTot) + (ViewBag.StateDeposit)) - (Model.Sum(a => a.Invoice.Where(k => k.Month == Alliance_for_Life.Models.Months.June).Sum(b => b.GrandTotal)) + (ViewBag.JunFee * .13)), 2).ToString("C")*@
+            </td>
+        <tr />
+        <tr style="font-size:13px; text-align:center;">
+            <th class="th-sm">
+                Total Invoice
+            </th>
+            <td class="inv">
+                @String.Format("{0:C}", ViewBag.JulPFee + ViewBag.JulFee + ViewBag.JulFee * 0.1)
+            </td>
+            <td class="inv">
+                @String.Format("{0:C}", ViewBag.AugPFee + ViewBag.AugFee + ViewBag.AugFee * 0.1)
+            </td>
+            <td class="inv">
+                @String.Format("{0:C}", ViewBag.SepPFee + ViewBag.SepFee + ViewBag.SepFee * 0.1)
+            </td>
+            <td class="inv">
+                @String.Format("{0:C}", ViewBag.OctPFee + ViewBag.OctFee + ViewBag.OctFee * 0.1)
+            </td>
+            <td class="inv">
+                @String.Format("{0:C}", ViewBag.NovPFee + ViewBag.NovFee + ViewBag.NovFee * 0.1)
+            </td>
+            <td class="inv">
+                @String.Format("{0:C}", ViewBag.DecPFee + ViewBag.DecFee + ViewBag.DecFee * 0.1)
+            </td>
+            <td class="inv">
+                @String.Format("{0:C}", ViewBag.JanPFee + ViewBag.JanFee + ViewBag.JanFee * 0.1)
+            </td>
+            <td class="inv">
+                @String.Format("{0:C}", ViewBag.FebPFee + ViewBag.FebFee + ViewBag.FebFee * 0.1)
+            </td>
+            <td class="inv">
+                @String.Format("{0:C}", ViewBag.MarPFee + ViewBag.MarFee + ViewBag.MarFee * 0.1)
+            </td>
+
+            <td class="inv">
+                @String.Format("{0:C}", ViewBag.AprPFee + ViewBag.AprFee + ViewBag.AprFee * 0.1)
+            </td>
+            <td class="inv">
+                @String.Format("{0:C}", ViewBag.MayPFee + ViewBag.MayFee + ViewBag.MayFee * 0.1)
+            </td>
+            <td class="inv">
+                @String.Format("{0:C}", ViewBag.JunPFee + ViewBag.JunFee + ViewBag.JunFee * 0.1)
+            </td>
+            <td style="background-color:#fedada" class="invtotal">
+                @String.Format("{0:C}", ViewBag.TotalPFee + ViewBag.TotalFee + (ViewBag.TotalFee * 0.1))
+
+
+
+            </td>
+        <tr />
+        <tr style="font-size:13px; text-align:center;">
+            <th class="th-sm">
+                Balance After Invoice Payment
+            </th>
+            @if (ViewBag.JulTot - (ViewBag.JulPFee + ViewBag.JulFee + ViewBag.JulFee * 0.1) < 0)
+            {
+                <td style="color: red;">
+                    @String.Format("{0:C}", ViewBag.JulTot - (ViewBag.JulPFee + ViewBag.JulFee + ViewBag.JulFee * 0.1))
+                </td>
+            }
+            else
+            {
+                <td>
+                    @String.Format("{0:C}", ViewBag.JulTot - (ViewBag.JulPFee + ViewBag.JulFee + ViewBag.JulFee * 0.1))
+                </td>
+            }
+
+            @if (ViewBag.AugRem < 0)
+            {
+                <td style="color: red;">
+                    @String.Format("{0:C}", ViewBag.AugRem)
+                </td>
+            }
+            else
+            {
+                <td>
+                    @String.Format("{0:C}", ViewBag.AugRem)
+                </td>
+            }
+
+            @if (ViewBag.SepRem < 0)
+            {
+                <td style="color: red;">
+                    @String.Format("{0:C}", ViewBag.SepRem)
+                </td>
+            }
+            else
+            {
+                <td>
+                    @String.Format("{0:C}", ViewBag.SepRem)
+                </td>
+            }
+
+            @if (ViewBag.OctRem < 0)
+            {
+                <td style="color: red;">
+                    @String.Format("{0:C}", ViewBag.OctRem)
+                </td>
+            }
+            else
+            {
+                <td>
+                    @String.Format("{0:C}", ViewBag.OctRem)
+                </td>
+            }
+
+            @if (ViewBag.NovRem < 0)
+            {
+                <td style="color: red;">
+                    @String.Format("{0:C}", ViewBag.NovRem)
+                </td>
+            }
+            else
+            {
+                <td>
+                    @String.Format("{0:C}", ViewBag.NovRem)
+                </td>
+            }
+
+            @if (ViewBag.DecRem < 0)
+            {
+                <td style="color: red;">
+                    @String.Format("{0:C}", ViewBag.DecRem)
+                </td>
+            }
+            else
+            {
+                <td>
+                    @String.Format("{0:C}", ViewBag.DecRem)
+                </td>
+            }
+
+            @if (ViewBag.JanRem < 0)
+            {
+                <td style="color: red;">
+                    @String.Format("{0:C}", ViewBag.JanRem)
+                </td>
+            }
+            else
+            {
+                <td>
+                    @String.Format("{0:C}", ViewBag.JanRem)
+                </td>
+            }
+
+            @if (ViewBag.FebRem < 0)
+            {
+                <td style="color: red;">
+                    @String.Format("{0:C}", ViewBag.FebRem)
+                </td>
+            }
+            else
+            {
+                <td>
+                    @String.Format("{0:C}", ViewBag.FebRem)
+                </td>
+            }
+
+            @if (ViewBag.MarRem < 0)
+            {
+                <td style="color: red;">
+                    @String.Format("{0:C}", ViewBag.MarRem)
+                </td>
+            }
+            else
+            {
+                <td>
+                    @String.Format("{0:C}", ViewBag.MarRem)
+                </td>
+            }
+
+            @if (ViewBag.AprRem < 0)
+            {
+                <td style="color: red;">
+                    @String.Format("{0:C}", ViewBag.AprRem)
+                </td>
+            }
+            else
+            {
+                <td>
+
+                    @String.Format("{0:C}", ViewBag.AprRem)
+                </td>
+            }
+
+            @if (ViewBag.MayRem < 0)
+            {
+                <td style="color: red;">
+                    @String.Format("{0:C}", ViewBag.MayRem)
+                </td>
+            }
+            else
+            {
+                <td>
+                    @String.Format("{0:C}", ViewBag.MayRem)
+                </td>
+            }
+
+            @if (ViewBag.JunRem < 0)
+            {
+                <td style="color: red;">
+                    @String.Format("{0:C}", ViewBag.JunRem)
+                </td>
+            }
+            else
+            {
+                <td>
+                    @String.Format("{0:C}", ViewBag.JunRem)
+
+                </td>
+            }
+
+            <td style="background-color:#fedada">
+                @* @String.Format("{0:C}", ViewBag.TotalPFee + ViewBag.TotalFee + ViewBag.TotalFee * 0.1 - ViewBag.StateDeposit)*@
+            </td>
+        <tr />
+</table>
+
+<table id="dtBasicExample" class="table table-striped table-bordered table-sm" style="font-size:16px" cellspacing="0" width="100">
+    <tr>
+        <td> @Html.Encode("BeginningBeginning Allocation")</td>
+        <td>
+            @String.Format("{0:C}", ViewBag.BeginingAllocation)
+        </td>
+    </tr>
+    <tr>
+        <td> @Html.Encode("State Deposits to-date")</td>
+        <td>
+            @String.Format("{0:C}", ViewBag.BeginingAllocation)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.DisplayName("Total Direct & Participant  Allocation")
+        </td>
+        <td>
+            @String.Format("{0:C}", ViewBag.TotalFee + ViewBag.TotalPFee)
+
+
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.Encode("10% Direct Admin")
+        </td>
+        <td>
+            @String.Format("{0:C}", ViewBag.TotalFee * 0.10)
+
+        </td>
+    </tr>
+
+    <tr>
+        <td></td>
+        <td></td>
+    </tr>
+
+    <tr>
+        <td>@Html.Encode("Allocation Left to Spend")</td>
+        <td>
+            @String.Format("{0:C}", (ViewBag.BeginingAllocation) - (ViewBag.TotalPFee + ViewBag.TotalFee + (ViewBag.TotalFee * 0.1)))
+        </td>
+    </tr>
+</table>
+<br />
+<br />
+<br />
+<br />
+<script src="~/Scripts/MyScripts.js"></script>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/css/datepicker.min.css" rel="stylesheet">
+
+@section Scripts {
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/js/bootstrap-datepicker.min.js"></script>
+    <script>
+        var dp = $("#Year").datepicker({
+            format: "yyyy",
+            startView: "years",
+            minViewMode: "years"
+        });
+    </script>
+}

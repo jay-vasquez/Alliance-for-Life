@@ -24,7 +24,7 @@ namespace Alliance_for_Life.Controllers
             //paged view
             ViewBag.CurrentSort = sortOrder;
             var datelist = Enumerable.Range(System.DateTime.Now.Year-1, 5).ToList();
-            ViewBag.Year = new SelectList(datelist);
+            ViewBag.Year = Year;//new SelectList(datelist);
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.YearSortParm = sortOrder == "Year" ? "year_desc" : "Year";
             ViewBag.RegionSortParm = sortOrder == "Region" ? "region_desc" : "Region";
@@ -111,7 +111,7 @@ namespace Alliance_for_Life.Controllers
             //paged view
             ViewBag.CurrentSort = sortOrder;
             var datelist = Enumerable.Range(System.DateTime.Now.Year-1, 5).ToList();
-            ViewBag.Year = new SelectList(datelist);
+            ViewBag.Year = Year;// new SelectList(datelist);
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.YearSortParm = sortOrder == "Year" ? "year_desc" : "Year";
             ViewBag.RegionSortParm = sortOrder == "Region" ? "region_desc" : "Region";
@@ -216,7 +216,8 @@ namespace Alliance_for_Life.Controllers
         public ActionResult Create()
         {
             var datelist = Enumerable.Range(System.DateTime.Now.Year-1, 5).ToList();
-            ViewBag.Year = new SelectList(datelist);
+            //ViewBag.Year = new SelectList(datelist);
+            //iewBag.Year = Year;
             return View();
         }
 
@@ -250,7 +251,7 @@ namespace Alliance_for_Life.Controllers
 
             var datelist = Enumerable.Range(System.DateTime.Now.Year-1, 5).ToList();
 
-            ViewBag.Year = new SelectList(datelist);
+            //ViewBag.Year = new SelectList(datelist);
 
             return View(budgetCosts);
         }
@@ -270,7 +271,7 @@ namespace Alliance_for_Life.Controllers
 
             var datelist = Enumerable.Range(System.DateTime.Now.Year-1, 5).ToList();
 
-            ViewBag.Year = new SelectList(datelist);
+            //ViewBag.Year = new SelectList(datelist);
 
             return View(budgetCosts);
         }
@@ -292,7 +293,7 @@ namespace Alliance_for_Life.Controllers
 
             var datelist = Enumerable.Range(DateTime.Now.Year, 5).ToList();
 
-            ViewBag.Year = new SelectList(datelist);
+            //ViewBag.Year = new SelectList(datelist);
 
 
             return View(budgetCosts);

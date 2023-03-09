@@ -21,7 +21,8 @@
                             Search By Month: @Html.DropDownList("Month", null, "Select Month", htmlAttributes: new { @class = "form-control", onchange = "this.form.submit()" })
                         </div>
                         <div class="col-xs-5th-1 col-sm-3" style="align-content:center;">
-                            Search By Year: @Html.DropDownList("Year", null, "Select Year", htmlAttributes: new { @class = "form-control", onchange = "this.form.submit()" })
+                            @*Search By Year: @Html.DropDownList("Year", null, "Select Year", htmlAttributes: new { @class = "form-control", onchange = "this.form.submit()" })*@
+                            Search By Year: @Html.TextBox("Year", null, htmlAttributes: new { placeholder = "Select Year", @class = "form-control", onchange = "this.form.submit()", name = "yearPicker" })
                         </div>
                         <div class="col-xs-5th-1 col-sm-3" style="align-content:center;">
                             Results per Page:@Html.DropDownList("pgSize", (IEnumerable<SelectListItem>)ViewBag.PageSize, "", htmlAttributes: new { @class = "form-control", onchange = "this.form.submit()" })
@@ -47,7 +48,8 @@
                             Search By Month: @Html.DropDownList("Month", null, "Select Month", htmlAttributes: new { @class = "form-control", onchange = "this.form.submit()" })
                         </div>
                         <div class="col-xs-5th-1 col-sm-3" style="align-content:center;">
-                            Search By Year: @Html.DropDownList("Year", null, "Select Year", htmlAttributes: new { @class = "form-control", onchange = "this.form.submit()" })
+                            @*Search By Year: @Html.DropDownList("Year", null, "Select Year", htmlAttributes: new { @class = "form-control", onchange = "this.form.submit()" })*@
+                            Search By Year: @Html.TextBox("Year", null, htmlAttributes: new { placeholder = "Select Year", @class = "form-control", onchange = "this.form.submit()", name = "yearPicker" })
                         </div>
                         <div class="col-xs-5th-1 col-sm-3" style="align-content:center;">
                             Results per Page: @Html.DropDownList("pgSize", (IEnumerable<SelectListItem>)ViewBag.PageSize, "", htmlAttributes: new { @class = "form-control", onchange = "this.form.submit()" })
@@ -135,83 +137,103 @@
 
         @foreach (var item in Model)
         {
-        <tr>
-             @if (User.IsInRole("Admin"))
-        {
+            <tr>
+                @if (User.IsInRole("Admin"))
+                {
 
-            <td>
-                @Html.ActionLink("Delete", "Delete", new { id = item.PSId })
-            </td>
-        }
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.PSId })
-            </td>
-            <td>
-                @Html.ActionLink("Details", "Details", new { id = item.PSId })
-            </td>
-            <td>
-                @item.Subcontractor.OrgName
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Month)
-            </td>
-            <td>
-                @item.Year
-            </td>
-            <td>
-                @item.Region.GetDisplayName()
-            </td>
-            <td>
-                @item.PTranspotation.ToString("C")
-            </td>
-            <td>
-                @item.PJobTrain.ToString("C")
-            </td>
-            <td>
-                @item.PEducationAssistance.ToString("C")
-            </td>
-            <td>
-                @item.PResidentialCare.ToString("C")
-            </td>
-            <td>
-                @item.PUtilities.ToString("C")
-            </td>
-            <td>
-                @item.PHousingEmergency.ToString("C")
-            </td>
-            <td>
-                @item.PHousingAssistance.ToString("C")
-            </td>
-            <td>
-                @item.PChildCare.ToString("C")
-            </td>
-            <td>
-                @item.PClothing.ToString("C")
-            </td>
-            <td>
-                @item.PFood.ToString("C")
-            </td>
-            <td>
-                @item.PSupplies.ToString("C")
-            </td>
-            <td>
+                    <td>
+                        @Html.ActionLink("Delete", "Delete", new { id = item.PSId })
+                    </td>
+                }
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.PSId })
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = item.PSId })
+                </td>
+                <td>
+                    @item.Subcontractor.OrgName
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Month)
+                </td>
+                <td>
+                    @item.Year
+                </td>
+                <td>
+                    @item.Region.GetDisplayName()
+                </td>
+                <td>
+                    @item.PTranspotation.ToString("C")
+                </td>
+                <td>
+                    @item.PJobTrain.ToString("C")
+                </td>
+                <td>
+                    @item.PEducationAssistance.ToString("C")
+                </td>
+                <td>
+                    @item.PResidentialCare.ToString("C")
+                </td>
+                <td>
+                    @item.PUtilities.ToString("C")
+                </td>
+                <td>
+                    @item.PHousingEmergency.ToString("C")
+                </td>
+                <td>
+                    @item.PHousingAssistance.ToString("C")
+                </td>
+                <td>
+                    @item.PChildCare.ToString("C")
+                </td>
+                <td>
+                    @item.PClothing.ToString("C")
+                </td>
+                <td>
+                    @item.PFood.ToString("C")
+                </td>
+                <td>
+                    @item.PSupplies.ToString("C")
+                </td>
+                <td>
 
 
 
-                @item.POtherInput: @item.POther.ToString("C")
-            </td>
-            <td>
-                @item.POtherInput2:  @item.POther2.ToString("C")
-            </td>
-            <td>
-                @item.POtherInput3:  @item.POther3.ToString("C")
-            </td>
-            <td>
-                @item.PTotals.ToString("C")
-            </td>
-        </tr>
+                    @item.POtherInput: @item.POther.ToString("C")
+                </td>
+                <td>
+                    @item.POtherInput2:  @item.POther2.ToString("C")
+                </td>
+                <td>
+                    @item.POtherInput3:  @item.POther3.ToString("C")
+                </td>
+                <td>
+                    @item.PTotals.ToString("C")
+                </td>
+            </tr>
         }
     </table>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/css/datepicker.min.css" rel="stylesheet">
+
+    @section scripts {
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/js/bootstrap-datepicker.min.js"></script>
+        <script>
+        var dp = $("#Year").datepicker({
+            format: "yyyy",
+            startView: "years",
+            minViewMode: "years"
+        });
+
+            var dp = $("#Year").datepicker({
+            format: "yyyy",
+            startView: "years",
+            minViewMode: "years"
+        });
+        </script>
+    }
 
     <h3>Total Participation Cost</h3>
     <p>
@@ -233,7 +255,7 @@
                             Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 
                             @Html.PagedListPager(Model, page => Url.Action("Index",
-                                new { searchString = ViewBag.Sub, Year = ViewBag.Yr,Month= ViewBag.Mnth,page,pgSize = ViewBag.psize}))    
+                                new { searchString = ViewBag.Sub, Year = ViewBag.Yr, Month = ViewBag.Mnth, page, pgSize = ViewBag.psize }))
                         </div>
                     </div>
                 </div>

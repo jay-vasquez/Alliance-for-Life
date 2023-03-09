@@ -29,7 +29,7 @@ namespace Alliance_for_Life.Controllers
             //paged view
             ViewBag.CurrentSort = sortOrder;
             var datelist = Enumerable.Range(System.DateTime.Now.Year - 1, 5).ToList();
-            ViewBag.Year = new SelectList(datelist);
+            ViewBag.Year = Year;// new SelectList(datelist);
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.YearSortParm = sortOrder == "Year" ? "year_desc" : "Year";
             ViewBag.Subcontractor = new SelectList(db.SubContractors.OrderBy(a => a.OrgName), "SubcontractorId", "OrgName");
